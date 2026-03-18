@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "volcengine-plan:default": {
+      "type": "api_key",
+      "key": "5f6cfdba-90df-40de-b36f-3ecd72fe6671"
+    },
+    "ollama:default": {
+      "type": "api_key",
+      "provider": "ollama",
+      "key": "ollama"
+    }
+  }
+}

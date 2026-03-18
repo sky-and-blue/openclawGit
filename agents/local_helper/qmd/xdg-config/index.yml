@@ -1,0 +1,10 @@
+collections:
+  memory-root-local-helper:
+    path: /Users/liyue/.openclaw/workspaces/local_helper
+    pattern: MEMORY.md
+  memory-alt-local-helper:
+    path: /Users/liyue/.openclaw/workspaces/local_helper
+    pattern: memory.md
+  memory-dir-local-helper:
+    path: /Users/liyue/.openclaw/workspaces/local_helper/memory
+    pattern: "**/*.md"

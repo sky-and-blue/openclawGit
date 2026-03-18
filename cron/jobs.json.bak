@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "266c434b-cccc-4fd5-9742-87382da3b83a",
+      "agentId": "main",
+      "sessionKey": "agent:main:feishu:direct:ou_7f5c8f2774475eabd071360f959caf5e",
+      "name": "内存监控（千问3.5）",
+      "enabled": true,
+      "createdAtMs": 1773804607371,
+      "updatedAtMs": 1773815632264,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 3600000,
+        "anchorMs": 1773804607371
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请检查内存使用情况：\\n1. 当前内存占用百分比\\n2. 占用内存最多的前3个进程\\n3. 如果内存使用率超过80%，给出优化建议",
+        "model": "ollama/qwen3.5:4b",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "ou_7f5c8f2774475eabd071360f959caf5e",
+        "channel": "feishu"
+      },
+      "state": {
+        "nextRunAtMs": 1773819112247,
+        "lastRunAtMs": 1773815512247,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 120017,
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1,
+        "lastError": "cron: job execution timed out",
+        "lastErrorReason": "timeout"
+      }
+    }
+  ]
+}
