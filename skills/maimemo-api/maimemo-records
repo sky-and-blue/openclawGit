@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# 墨墨背单词 - 查询学习记录
+AS_COUNT=false
+LIMIT=100
+DATE=""
+
+# 解析参数
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --count)
+      AS_COUNT=true
+      shift
+      ;;
+    --date)
+      DATE="$2"
+      shift 2
+      ;;
+    --limit)
+      LIMIT="$2"
+      shift 2
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
+# 构造请求体
+BODY="{\"limit\": $LIMIT, \"as_count\": $AS_COUNT"
+if [ ! -z "$DATE" ]; then
+  BODY="$BODY, \"next_study_date\": {\"start\": \"${DATE}T00:00:00+08:00\", \"end\": \"${DATE}T23:59:59+08:00\"}"
+fi
+BODY="$BODY}"
+
+# 调用接口
+RESPONSE=$(curl --request POST \
+  --url https://open.maimemo.com/open/api/v1/study/query_study_records \
+  --header 'Accept: application/json' \
+  --header "Authorization: Bearer $MAIMEMO_ACCESS_TOKEN" \
+  --header 'Content-Type: application/json' \
+  --data "$BODY")
+
+if [ "$AS_COUNT" = true ]; then
+  echo "📊 总学习单词量：$(echo $RESPONSE | jq -r '.data.count') 个"
+else
+  if [ ! -z "$DATE" ]; then
+    echo "📅 $DATE 需要复习的单词（共$(echo $RESPONSE | jq -r '.data.records | length')个）："
+  else
+    echo "📋 学习记录（共$(echo $RESPONSE | jq -r '.data.records | length')个）："
+  fi
+  echo $RESPONSE | jq -r '.data.records[] | "-\(.voc_spelling) | 学习次数：\(.study_count) | 下次复习：\(.next_study_date[0:10])"'
+fi

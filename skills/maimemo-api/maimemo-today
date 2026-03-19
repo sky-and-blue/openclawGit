@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# 墨墨背单词 - 获取今日学习单词列表
+LIMIT=200
+IS_FINISHED=""
+IS_NEW=""
+
+# 解析参数
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --finished)
+      IS_FINISHED="$2"
+      shift 2
+      ;;
+    --new)
+      IS_NEW="$2"
+      shift 2
+      ;;
+    *)
+      LIMIT="$1"
+      shift
+      ;;
+  esac
+done
+
+# 构造请求体
+BODY="{\"limit\": $LIMIT"
+if [ ! -z "$IS_FINISHED" ]; then
+  BODY="$BODY, \"is_finished\": $IS_FINISHED"
+fi
+if [ ! -z "$IS_NEW" ]; then
+  BODY="$BODY, \"is_new\": $IS_NEW"
+fi
+BODY="$BODY}"
+
+# 调用接口
+curl --request POST \
+  --url https://open.maimemo.com/open/api/v1/study/get_today_items \
+  --header 'Accept: application/json' \
+  --header "Authorization: Bearer $MAIMEMO_ACCESS_TOKEN" \
+  --header 'Content-Type: application/json' \
+  --data "$BODY" | jq -r '
+"📋 今日学习单词（共\(.data.today_items | length)个）：
+\(.data.today_items[] | "-\(.voc_spelling) \(.is_new ? "🆕" : "") \(.is_finished ? "✅" : "⏳") \(.first_response // "未学习")")
+'

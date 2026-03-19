@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# 墨墨背单词 - 获取今日学习进度
+curl --request POST \
+  --url https://open.maimemo.com/open/api/v1/study/get_study_progress \
+  --header 'Accept: application/json' \
+  --header "Authorization: Bearer $MAIMEMO_ACCESS_TOKEN" \
+  --header 'Content-Type: application/json' | jq -r '
+"✅ 今日学习进度：
+已完成单词：\(.data.progress.finished) 个
+今日目标：\(.data.progress.total) 个
+完成进度：\(if .data.progress.total > 0 then (.data.progress.finished * 100 / .data.progress.total | tostring) + "%" else "0%" end)
+学习时长：\(if .data.progress.study_time > 0 then (.data.progress.study_time / 1000 / 60 | floor | tostring) + " 分 " + (.data.progress.study_time / 1000 % 60 | floor | tostring) + " 秒" else "0 分 0 秒" end)"
+'

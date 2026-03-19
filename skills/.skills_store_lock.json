@@ -102,6 +102,18 @@
       "zip_url": "https://lightmake.site/api/v1/download?slug=auto-updater",
       "source": "skillhub",
       "version": "1.0.0"
+    },
+    "github-kb": {
+      "name": "GitHub Knowledge Base",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=github-kb",
+      "source": "skillhub",
+      "version": "1.0.1"
+    },
+    "semantic-router": {
+      "name": "Semantic Router",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=semantic-router",
+      "source": "skillhub",
+      "version": "7.9.6"
     }
   }
 }

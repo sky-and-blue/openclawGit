@@ -1,0 +1,30 @@
+{
+  "Intelligence": {
+    "name": "智能池",
+    "description": "代码开发、系统运维、自动化任务",
+    "primary": "volcengine:default:provider",
+    "fallback_1": "volcengine:default:mode",
+    "fallback_2": "null"
+  },
+  "Highspeed": {
+    "name": "高速池",
+    "description": "信息检索、快速查询、协调沟通",
+    "primary": "volcengine:default:provider",
+    "fallback_1": "volcengine:default:mode",
+    "fallback_2": "null"
+  },
+  "Humanities": {
+    "name": "人文池",
+    "description": "内容创作、教育培训、多模态识别",
+    "primary": "volcengine:default:provider",
+    "fallback_1": "volcengine:default:mode",
+    "fallback_2": "null"
+  },
+  "Agentic": {
+    "name": "代理池",
+    "description": "长上下文代理任务、Computer Use、复杂多工具调用、专业知识工作（文档/表格）",
+    "primary": "volcengine:default:provider",
+    "fallback_1": "volcengine:default:mode",
+    "fallback_2": "null"
+  }
+}

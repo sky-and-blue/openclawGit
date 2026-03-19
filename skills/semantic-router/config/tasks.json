@@ -1,0 +1,32 @@
+{
+  "代码开发": {
+    "pool": "Intelligence",
+    "keywords": [
+      "代码开发"
+    ]
+  },
+  "信息检索": {
+    "pool": "Highspeed",
+    "keywords": [
+      "信息检索"
+    ]
+  },
+  "内容创作": {
+    "pool": "Humanities",
+    "keywords": [
+      "内容创作"
+    ]
+  },
+  "数据分析": {
+    "pool": "Highspeed",
+    "keywords": [
+      "数据分析"
+    ]
+  },
+  "系统运维": {
+    "pool": "Intelligence",
+    "keywords": [
+      "系统运维"
+    ]
+  }
+}
