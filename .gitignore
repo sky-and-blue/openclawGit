@@ -1,2 +1,11 @@
 workspace/
 workspaces/
+
+# 独立Git子仓库
+agents/planner/
+agents/planner_workspace/
+
+# 临时文件
+.DS_Store
+*.log
+tmp/
